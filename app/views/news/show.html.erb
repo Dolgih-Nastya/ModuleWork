@@ -1,0 +1,8 @@
+<p id="notice"><%= notice %></p>
+<h1><%=@news.header%></h1>
+<ul>
+  <p>Новость: <li><%= @news.news%></li> </p>
+  <p>Количество просмотров: <li><%= @news.views_number%></li>  </p>
+</ul>
+<%= link_to 'Edit', edit_news_path(@news) %> |
+<%= link_to 'Back', news_index_path %>
