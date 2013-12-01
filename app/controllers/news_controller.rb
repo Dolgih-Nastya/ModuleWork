@@ -5,11 +5,14 @@ class NewsController < ApplicationController
   # GET /news.json
   def index
     @newses = News.all
+	@period = time_of_day
+	@color = color_by_time
   end
 
   # GET /news/1
   # GET /news/1.json
   def show
+	@period = time_of_day
     puts params
     unless @news=News.where(id: params[:id]).first
       render text: "Page not found", :status => 404
@@ -23,12 +26,14 @@ class NewsController < ApplicationController
 
   # GET /news/1/edit
   def edit
+	@period = time_of_day
     @news =News.find(params[:id])
   end
 
   # POST /news
   # POST /news.json
   def create
+	@period = time_of_day
     @news = News.new(news_params)
 
     respond_to do |format|
@@ -45,6 +50,7 @@ class NewsController < ApplicationController
   # PATCH/PUT /news/1
   # PATCH/PUT /news/1.json
   def update
+	@period = time_of_day
      @news =News.find(params[:id])
     respond_to do |format|
       if @news.update_attributes(news_params)
@@ -61,6 +67,7 @@ class NewsController < ApplicationController
   # DELETE /news/1
   # DELETE /news/1.json
   def destroy
+	@period = time_of_day
     @news.destroy()
     respond_to do |format|
       format.html { redirect_to news_index_url }

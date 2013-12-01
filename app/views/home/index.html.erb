@@ -1,13 +1,37 @@
-<% if user_signed_in? %>
+<%# строка с указанием начала дива для хэдера находится в application.html.erb%>
+	<% if user_signed_in? %>
+	<div class="registration">
+		<span>Вы успешно вошли на сайт!</span>
+		<%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+		<%#= link_to "Каталог" ,news_index_path, :method=>:get %>
+	</div>
 
-    <h3>you have succesfully signed in</h3>
-    <%= link_to "Sign Out", destroy_user_session_path, :method => :delete %>
-    <%= link_to "Catalogue" ,news_index_path, :method=>:get %>
+	<% else %>
+	<div class="registration">
+		<%= link_to "Войти", new_user_session_path, :method => :get %>
+		<%= link_to "Регистрация", new_user_registration_path, :method => :get %>
+	</div>	
+	<% end %>  
+<h1>Последние новости:</h1>	
+</div>
 
-<% else %>
-
-    <h1> welcome to News web-site</h1>
-    <%= link_to "Sign In", new_user_session_path, :method => :get %>
-    <%= link_to "Sign up", new_user_registration_path, :method => :get %>
-
-<% end %>
+<div id="content">
+<% @newses.each do |news| %>
+	<div class="bordered"> 
+        <div id="item_title">
+			<h3><%=link_to news.header, news_path(news)%></h3>
+		</div>
+		<div id="news_text">
+			<%= truncate(news.news , :length => 100) %>
+		</div>
+        <div id="item_controls">
+			<%#= link_to 'Показать', news %>
+			<% if user_signed_in? %>
+			<%= link_to 'Редактировать', edit_news_path(news) %>
+			<%= link_to 'Удалить', news, method: :delete, data: { confirm: 'Вы уверены?' } %>
+			<% end %>
+		</div>
+	</div>  
+<% end %> 
+<%= link_to 'Что нового?', new_news_path %>  
+</div>

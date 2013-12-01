@@ -1,8 +1,16 @@
-<h1>Editing news</h1>
+<%# строка с указанием начала дива для хэдера находится в application.html.erb%>
+	<% if user_signed_in? %>
+	<div class="registration">
+		<%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+	</div>
+	<% end %> 
 <%= form_for @news do |f| %>
-    <p><%=f.text_field :header%></p>
-    <p><%=f.text_field :news%></p>
-    <p><%=f.submit%></p>
+    <%=f.text_field :header%>
+</div>
+<div id="content">
+    <p><%=f.text_area :news%></p>
+    <p><%=f.submit("Изменить")%></p>
 <%end%>
-<%= link_to 'Show', @news %> |
-<%= link_to 'Back', news_index_path %>
+<%= link_to 'Показать', @news %> |
+<%= link_to 'Назад', news_index_path %>
+</div>

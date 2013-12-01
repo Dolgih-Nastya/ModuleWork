@@ -1,14 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>ModuleSite</title>
+  <title>Module Work</title>
   <%= stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true %>
   <%= javascript_include_tag "application", "data-turbolinks-track" => true %>
   <%= csrf_meta_tags %>
 </head>
-<body>
-
-<%= yield %>
-
+<body class = "<%= time_of_day%>">
+	<div class="<%= time_of_day%>" id="header">
+	<%= yield %>
+	<div id="footer">
+		Made by Dolgih Anastasya and Onischenko Elena, PZ-10-1, 2013
+	</div>
 </body>
 </html>

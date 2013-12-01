@@ -1,8 +1,27 @@
-<p id="notice"><%= notice %></p>
+<%# строка с указанием начала дива для хэдера находится в application.html.erb%>
+<% if user_signed_in? %>
+	<div class="registration">
+		<span>Вы успешно вошли на сайт!</span>
+		<%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+		<%#= link_to "Каталог" ,news_index_path, :method=>:get %>
+	</div>
+
+	<% else %>
+	<div class="registration">
+		<%= link_to "Войти", new_user_session_path, :method => :get %>
+		<%= link_to "Регистрация", new_user_registration_path, :method => :get %>
+	</div>	
+	<% end %>  
 <h1><%=@news.header%></h1>
-<ul>
-  <p>Новость: <li><%= @news.news%></li> </p>
-  <p>Количество просмотров: <li><%= @news.views_number%></li>  </p>
-</ul>
-<%= link_to 'Edit', edit_news_path(@news) %> |
-<%= link_to 'Back', news_index_path %>
+</div>
+
+
+<div id="content">
+  <div class="bordered"> 
+	<p><%= @news.news%> </p>
+  </div>
+  <p>Количество просмотров:<%= @news.views_number%>  </p>
+
+<%= link_to 'Редактировать', edit_news_path(@news) %> |
+<%= link_to 'Назад', news_index_path %>
+</div>

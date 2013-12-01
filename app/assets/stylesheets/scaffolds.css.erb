@@ -1,0 +1,174 @@
+﻿#header.morning{
+	background: #8F0100 url(<%= asset_path "banner_morning.jpg" %>);
+	background-size: cover;
+}
+
+.morning{
+	color: #FAFAD2;
+	border-color: gold;
+	background: #8F0100;
+}
+
+#header.day{
+	background: #66296E url(<%= asset_path "banner_day.jpg" %>);
+	background-size: cover;
+	color: #66296E;
+}
+
+.day{
+	color: #F9DBF9;
+	border-color: orchid;
+	background: #66296E
+}
+
+#header.evening{
+	background: #0A1451 url(<%= asset_path 'banner_evening.jpg' %>);
+	background-size: cover;
+	color: #F0FFFF; 
+	border-color: navy;
+}
+
+.evening{
+	background: #0A1451
+	color: #F0FFFF; 
+	border-color: navy;
+}
+
+#header.night{
+	background-image: url(<%= asset_path "banner_night.jpg" %>);
+	background-color: #000000;
+	background-size: cover;
+	color: #F0FFFF;
+	border-color: navy;
+}
+
+.night{
+	background: #000000;
+	color: #F0FFFF;
+	border-color: navy;
+}
+
+div#header{
+	left:0%;
+	right:0%;
+	width:100%;
+	height: 260px;
+}
+div.input{
+	padding:3%;
+	}
+	
+input[type = "text"]{
+	width:60%;
+} 	
+	
+textarea{
+	width:60%;
+	resize: vertical;
+}
+
+div.registration{
+	text-align: right;
+	position: relative;
+	padding:1%;
+}
+
+#content{
+	height:100%;
+	border-color:inherit;
+	margin:1%;
+}
+
+h1{
+	padding:3%;
+}
+
+div.bordered{
+    padding: 5px;
+	margin-bottom: 10px;
+	border: solid 1px; 	
+	border-color: inherit;
+	width:70%;
+}
+
+div#footer{
+	text-align:right; 
+	padding:10px;
+	position: relative;
+	bottom: 0 px;
+}
+
+
+body {
+  background-color: #fff;
+  color: #333;
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  margin:0;
+  background-image: none;
+  word-wrap: break-word;
+}
+
+p, ol, ul, td {
+  font-family: verdana, arial, helvetica, sans-serif;
+  font-size: 13px;
+  line-height: 18px;
+  padding:inherit;
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: white;
+  &:visited {
+    color: bisque;
+  }
+  &:hover {
+    color: #fff;
+    background-color: #000;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+#notice {
+  color: green;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+#error_explanation {
+  width: 450px;
+  border: 2px solid red;
+  padding: 7px;
+  padding-bottom: 0;
+  margin-bottom: 20px;
+  background-color: #f0f0f0;
+  h2 {
+    text-align: left;
+    font-weight: bold;
+    padding: 5px 5px 5px 15px;
+    font-size: 12px;
+    margin: -7px;
+    margin-bottom: 0px;
+    background-color: #c00;
+    color: #fff;
+  }
+  ul li {
+    font-size: 12px;
+    list-style: square;
+  }
+}
