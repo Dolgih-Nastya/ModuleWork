@@ -12,7 +12,7 @@
 #header.day{
 	background: #66296E url(<%= asset_path "banner_day.jpg" %>);
 	background-size: cover;
-	color: #66296E;
+	//color: #66296E;
 }
 
 .day{
@@ -24,28 +24,24 @@
 #header.evening{
 	background: #0A1451 url(<%= asset_path 'banner_evening.jpg' %>);
 	background-size: cover;
-	color: #F0FFFF; 
-	border-color: navy;
+	color: navy; 
 }
 
 .evening{
-	background: #0A1451
-	color: #F0FFFF; 
+	color: white; 
 	border-color: navy;
+	background: #0A1451	
 }
 
 #header.night{
-	background-image: url(<%= asset_path "banner_night.jpg" %>);
-	background-color: #000000;
+	background: #000000 url(<%= asset_path "banner_night.jpg" %>); 
 	background-size: cover;
-	color: #F0FFFF;
-	border-color: navy;
 }
 
 .night{
-	background: #000000;
 	color: #F0FFFF;
 	border-color: navy;
+	background: #000000;
 }
 
 div#header{
@@ -55,12 +51,20 @@ div#header{
 	height: 260px;
 }
 div.input{
-	padding:3%;
+	padding:1%;
 	}
 	
-input[type = "text"]{
+input{
 	width:60%;
-} 	
+} 
+
+input[type="submit"]{
+	width:auto;
+}
+
+input[type="checkbox"]{
+	width:auto;
+}	
 	
 textarea{
 	width:60%;
@@ -74,13 +78,24 @@ div.registration{
 }
 
 #content{
+	float:left;
 	height:100%;
+	width:70%;
 	border-color:inherit;
 	margin:1%;
 }
 
-h1{
-	padding:3%;
+#menu{
+	float:right;
+	//height:100%;
+	width:25%;
+	border: solid 1px;
+	border-color:inherit;
+	margin:1%;
+}
+
+h1, h2{
+	margin:3%;
 }
 
 div.bordered{
@@ -88,19 +103,25 @@ div.bordered{
 	margin-bottom: 10px;
 	border: solid 1px; 	
 	border-color: inherit;
-	width:70%;
+	width:100%;
 }
 
 div#footer{
 	text-align:right; 
 	padding:10px;
-	position: relative;
+	clear:both;
 	bottom: 0 px;
 }
 
+div.center{
+	margin-left:auto;
+	margin-right:auto;
+	width:70%;
+	text-align:center;
+}
 
 body {
-  background-color: #fff;
+  //background-color: #fff;
   color: #333;
   font-family: verdana, arial, helvetica, sans-serif;
   font-size: 13px;

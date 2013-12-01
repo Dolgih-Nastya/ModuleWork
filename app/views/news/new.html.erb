@@ -15,7 +15,12 @@
 	<div class="input">
 		Текст:<br>
 		<%=f.text_area :news%>
-		<br>
+	</div>
+	<div class="input">
+		Категория:<br> 
+		<%= select_tag(:section_id, options_from_collection_for_select(Section.all, :id, :name)) %>
+	</div>
+	<div class="input">
 		<%=f.submit("Создать")%>
 	</div>
 <%end%>

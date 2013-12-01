@@ -2,8 +2,8 @@
 	<% if user_signed_in? %>
 	<div class="registration">
 		<span>Вы успешно вошли на сайт!</span>
-		<%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
-		<%#= link_to "Каталог" ,news_index_path, :method=>:get %>
+		<%= link_to "Выйти", destroy_user_session_path, :method => :delete %> |
+		<%= link_to 'Что нового?', new_news_path %> 
 	</div>
 
 	<% else %>
@@ -14,7 +14,6 @@
 	<% end %>  
 <h1>Последние новости:</h1>	
 </div>
-
 <div id="content">
 <% @newses.each do |news| %>
 	<div class="bordered"> 
@@ -31,7 +30,10 @@
 			<%= link_to 'Удалить', news, method: :delete, data: { confirm: 'Вы уверены?' } %>
 			<% end %>
 		</div>
-	</div>  
+	</div> 	
 <% end %> 
-<%= link_to 'Что нового?', new_news_path %>  
 </div>
+<div id="menu">
+blah-blah
+</div>
+

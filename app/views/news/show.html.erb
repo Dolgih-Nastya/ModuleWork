@@ -17,11 +17,14 @@
 
 
 <div id="content">
+<p>Категория: <%= @section%></p>
   <div class="bordered"> 
 	<p><%= @news.news%> </p>
   </div>
   <p>Количество просмотров:<%= @news.views_number%>  </p>
-
-<%= link_to 'Редактировать', edit_news_path(@news) %> |
+  <p>Создано:<%= @news.created_at%>  </p>
+<% if user_signed_in? %>
+	<%= link_to 'Редактировать', edit_news_path(@news) %> |
+<% end %>
 <%= link_to 'Назад', news_index_path %>
 </div>

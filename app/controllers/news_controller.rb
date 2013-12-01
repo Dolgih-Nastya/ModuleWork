@@ -4,38 +4,40 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @newses = News.all
-	@period = time_of_day
-	@color = color_by_time
+    @newses = News.all.order(created_at: :desc)
   end
 
   # GET /news/1
   # GET /news/1.json
   def show
-	@period = time_of_day
     puts params
     unless @news=News.where(id: params[:id]).first
       render text: "Page not found", :status => 404
     end
+	unless @news.views_number
+		@news.views_number=0
+	end
+	@news.views_number+=1
+	@news.save
+	@section_num = NewsSection.where(news_id: @news.id).first.section_id
+	@section = Section.where(id: @section_num).first.name
   end
 
   # GET /news/new
   def new
     @news = News.new
+	@section_num = NewsSection.new
   end
 
   # GET /news/1/edit
   def edit
-	@period = time_of_day
     @news =News.find(params[:id])
   end
 
   # POST /news
   # POST /news.json
   def create
-	@period = time_of_day
     @news = News.new(news_params)
-
     respond_to do |format|
       if @news.save
         format.html { redirect_to @news, notice: 'News was successfully created.' }
@@ -44,13 +46,20 @@ class NewsController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @news.errors, status: :unprocessable_entity }
       end
+	@section_num = NewsSection.new(news_id:@news.id, section_id:params[:section_id])
+	  if @section_num.save
+		format.html { redirect_to @section_num, notice: 'News was successfully related with section.' }
+        format.json { render action: 'show', status: :created, location: @section_num }
+	  else
+		format.html { render action: 'new' }
+        format.json { render json: @section_num.errors, status: :unprocessable_entity }
+	  end
     end
   end
 
   # PATCH/PUT /news/1
   # PATCH/PUT /news/1.json
   def update
-	@period = time_of_day
      @news =News.find(params[:id])
     respond_to do |format|
       if @news.update_attributes(news_params)
@@ -61,13 +70,26 @@ class NewsController < ApplicationController
         format.html { render action: 'edit' }
         format.json { render json: @news.errors, status: :unprocessable_entity }
       end
+	  
+	@section_num = NewsSection.where(news_id:@news.id).first
+	@section_num.update_attributes(section_id:params[:section_id])
+	  if @section_num.save
+		format.html { redirect_to @section_num, notice: 'News was successfully related with section.' }
+        format.json { render action: 'show', status: :created, location: @section_num }
+	  else
+		format.html { render action: 'new' }
+        format.json { render json: @section_num.errors, status: :unprocessable_entity }
+	  end
     end
   end
 
   # DELETE /news/1
   # DELETE /news/1.json
   def destroy
-	@period = time_of_day
+	@section_num = NewsSection.where(news_id:@news.id).first
+	if @section_num
+		@section_num.destroy()
+	end
     @news.destroy()
     respond_to do |format|
       format.html { redirect_to news_index_url }

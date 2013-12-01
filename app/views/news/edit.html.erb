@@ -5,11 +5,24 @@
 	</div>
 	<% end %> 
 <%= form_for @news do |f| %>
-    <%=f.text_field :header%>
+	<div class="input">
+		Заголовок:<br>
+		<%=f.text_field :header%>
+	</div>
 </div>
+
 <div id="content">
-    <p><%=f.text_area :news%></p>
-    <p><%=f.submit("Изменить")%></p>
+	<div class="input">
+		Текст:<br>
+		<%=f.text_area :news%>
+	</div>
+	<div class="input">
+		Категория:<br> 
+		<%= select_tag(:section_id, options_from_collection_for_select(Section.all, :id, :name)) %>
+	</div>
+	<div class="input">
+		<%=f.submit("Изменить")%>
+	</div>
 <%end%>
 <%= link_to 'Показать', @news %> |
 <%= link_to 'Назад', news_index_path %>

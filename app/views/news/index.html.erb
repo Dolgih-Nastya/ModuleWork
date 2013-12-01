@@ -2,7 +2,7 @@
 	<% if user_signed_in? %>
 	<div class="registration">
 		<span>Вы успешно вошли на сайт!</span>
-		<%= link_to "Выйти", destroy_user_session_path, :method => :delete %>
+		<%= link_to "Выйти", destroy_user_session_path, :method => :delete %> |
 		<%= link_to 'Что нового?', new_news_path %>
 	</div>
 
@@ -32,6 +32,7 @@
 		<% end %> 
 </div>     
 <% end %>
-
-
+</div>
+<div id="menu">
+blah-blah
 </div>
