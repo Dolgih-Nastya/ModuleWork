@@ -4,7 +4,15 @@ class NewsController < ApplicationController
   # GET /news
   # GET /news.json
   def index
-    @newses = News.all.order(created_at: :desc)
+	@newses = News.all.order(created_at: :desc)
+	if	s = params[:section]
+		ns = NewsSection.where(section_id: s)
+		if ns
+			@ns.each do |n|
+				@newses.where(id: n.news_id).destroy
+			end
+		end	
+	end
   end
 
   # GET /news/1
